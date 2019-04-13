@@ -23,13 +23,13 @@ import java.util.Set;
 public class MyRealm extends AuthorizingRealm{
 
     @Autowired
-    private UserDao userDao;
+    private UserDao userdao;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         String name = (String) principalCollection.getPrimaryPrincipal();
-        List<String> roleByName = userDao.findRoleByName(name);
-        List<String> permisionByName = userDao.findPermisionByName(name);
+        List<String> roleByName = userdao.findRoleByName(name);
+        List<String> permisionByName = userdao.findPermisionByName(name);
         Set<String> roleset = new HashSet<>(roleByName);
         Set<String> permset = new HashSet<>(permisionByName);
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -40,8 +40,10 @@ public class MyRealm extends AuthorizingRealm{
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-      String name = (String)  token.getPrincipal();
-        String pwdByName = userDao.findPwdByName(name);
+         String name = (String)  token.getPrincipal();
+        System.out.println(name);
+        String pwdByName = userdao.findPwdByName(name);
+        System.out.println(pwdByName);
         SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(name, pwdByName, this.getName());
         return simpleAuthenticationInfo;
     }
