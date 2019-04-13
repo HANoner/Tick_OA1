@@ -120,7 +120,7 @@
   </select>
 
   <select id="findPermisionByName" parameterType="string" resultType="string">
-    SELECT  distinct ta.title from t_user tu INNER JOIN
+    SELECT  distinct ta.aicon from t_user tu INNER JOIN
     t_userrole tur on tu.id = tur.uid INNER JOIN
     t_role tr ON tur.rid = tr.id INNER JOIN
     t_roleauthority tra ON tr.id = tra.rid INNER JOIN

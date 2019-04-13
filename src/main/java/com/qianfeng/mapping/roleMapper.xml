@@ -2,11 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qianfeng.dao.roleMapper">
   <resultMap id="BaseResultMap" type="com.qianfeng.entity.role">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="info" jdbcType="VARCHAR" property="info" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="parentId" jdbcType="INTEGER" property="parentid" />
-  </resultMap>
+  <id column="id" jdbcType="INTEGER" property="id" />
+  <result column="info" jdbcType="VARCHAR" property="info" />
+  <result column="name" jdbcType="VARCHAR" property="name" />
+  <result column="parentId" jdbcType="INTEGER" property="pa.rentid" />
+</resultMap>
+
+
+
+
+
   <sql id="Base_Column_List">
     id, info, name, parentId
   </sql>
@@ -79,4 +84,43 @@
       parentId = #{parentid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--<resultMap id="menulist" type="com.qianfeng.vo.VMenuList">
+    <id column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="ptitle"  property="title" />
+    <result column="paurl"  property="aurl" />
+    <result column="tname"  property="tname" />
+    <collection property="vlist" javaType="java.util.ArrayList" ofType="com.qianfeng.vo.VMenuList">
+      <result column="title" property="title" />
+      <result column="aurl"  property="aurl" />
+    </collection>
+  </resultMap>-->
+
+  <resultMap type="com.qianfeng.vo.VMenuList" id="menuMap">
+    <id property="tid" column="cid"/>
+    <result property="title" column="ctitle"/>
+    <result property="aurl" column="curl"/>
+    <collection property="vlist" javaType="java.util.ArrayList" ofType="com.qianfeng.vo.VMenuList">
+      <id property="tid" column="aid"/>
+      <result property="title" column="atitle"/>
+      <result property="aurl" column="aurl"/>
+    </collection>
+  </resultMap>
+  <!--以下-->
+  <select id = "findAll" parameterType="string" resultMap="menuMap">
+  select a.id aid,a.title atitle,a.aurl ,au.id cid,au.title ctitle,au.aurl curl
+  from t_authority a
+  inner join t_authority au
+  on a.parentId = au.id
+  inner join t_roleauthority ra
+  on ra.aid = au.id
+  inner join t_role r
+  on ra.rid = r.id
+  inner join t_userrole ur
+  on r.id = ur.rid
+  inner join t_user u
+  on ur.uid = u.id
+  where u.no= #{uno}
+  </select>
+
+
 </mapper>

@@ -82,6 +82,7 @@
 		});
 	</script>
 	<script type="text/javascript">
+		var uno = $("input[name='no']").val();
 		$("form").submit(function(){
 		    $.ajax({
 				type:"post",
@@ -91,7 +92,7 @@
 				success:function (data) {
 					if(data.code == 1){
 					    alert("登陆成功")
-					    window.location.href = "index.html"
+					    window.location.href = "index.html?uno="+uno;
 					}
                 }
 			})

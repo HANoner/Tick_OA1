@@ -150,7 +150,7 @@
 			/login.do = anon
 				<!--静态资源全部都放行-->
 				/media/** = anon
-
+			/list.do = anon
 
 
 

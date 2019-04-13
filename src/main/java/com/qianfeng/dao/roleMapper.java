@@ -1,6 +1,9 @@
 package com.qianfeng.dao;
 
 import com.qianfeng.entity.role;
+import com.qianfeng.vo.VMenuList;
+
+import java.util.List;
 
 public interface roleMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,6 @@ public interface roleMapper {
     int updateByPrimaryKeySelective(role record);
 
     int updateByPrimaryKey(role record);
+    // menu
+    public List<VMenuList> findAll(String uno);
 }
