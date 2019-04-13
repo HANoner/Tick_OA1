@@ -1,7 +1,6 @@
 package com.qianfeng.realm;
 
-import com.qianfeng.dao.UserDao;
-import jdk.nashorn.internal.parser.Token;
+import com.qianfeng.dao.userMapper;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -23,7 +22,7 @@ import java.util.Set;
 public class MyRealm extends AuthorizingRealm{
 
     @Autowired
-    private UserDao userdao;
+    private userMapper userdao;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {

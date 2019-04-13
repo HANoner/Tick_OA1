@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianfeng.dao.userMapper">
+  <resultMap id="BaseResultMap" type="com.qianfeng.entity.user">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="headphoto" jdbcType="VARCHAR" property="headphoto" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, no, password, name, flag, headphoto
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianfeng.entity.user">
+    insert into t_user (id, no, password, 
+      name, flag, headphoto
+      )
+    values (#{id,jdbcType=INTEGER}, #{no,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{flag,jdbcType=INTEGER}, #{headphoto,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianfeng.entity.user">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="no != null">
+        no,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="headphoto != null">
+        headphoto,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="headphoto != null">
+        #{headphoto,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianfeng.entity.user">
+    update t_user
+    <set>
+      <if test="no != null">
+        no = #{no,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="headphoto != null">
+        headphoto = #{headphoto,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianfeng.entity.user">
+    update t_user
+    set no = #{no,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=INTEGER},
+      headphoto = #{headphoto,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+      <!--以下是添加的-->
+  <select id="findPwdByName" parameterType="string" resultType="string">
+    select password from t_user where no=#{uno}
+  </select>
+
+  <select id="findRoleByName" parameterType="string" resultType="string">
+    <!--这里是通过no登陆的所以查询的应该是no 下面的权限同理-->
+    SELECT tr.`name` from t_user tu INNER JOIN
+    t_userrole tur ON tu.id = tur.uid INNER JOIN
+    t_role tr ON tur.rid = tr.id where tu.`no` = #{uno}
+
+  </select>
+
+  <select id="findPermisionByName" parameterType="string" resultType="string">
+    SELECT  distinct ta.title from t_user tu INNER JOIN
+    t_userrole tur on tu.id = tur.uid INNER JOIN
+    t_role tr ON tur.rid = tr.id INNER JOIN
+    t_roleauthority tra ON tr.id = tra.rid INNER JOIN
+    t_authority ta on tra.aid = ta.id where tu.`no` = '#{uno}
+  </select>
+
+
+</mapper>
