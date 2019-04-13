@@ -1,5 +1,8 @@
 package com.qianfeng.service.impl;
 
+import com.qianfeng.common.JsonBean;
+import com.qianfeng.dao.userMapper;
+import com.qianfeng.entity.user;
 import com.qianfeng.service.UserService;
 import jdk.nashorn.internal.parser.Token;
 import org.apache.shiro.SecurityUtils;
@@ -14,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-
+private userMapper userMapper;
     @Override
     public void login(String name, String password, boolean remaberme) {
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(name, password);
@@ -24,5 +27,7 @@ public class UserServiceImpl implements UserService {
         Subject subject = SecurityUtils.getSubject();
         subject.login(usernamePasswordToken);
     }
+
+
 }
 

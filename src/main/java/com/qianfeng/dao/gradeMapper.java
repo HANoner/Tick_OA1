@@ -2,6 +2,8 @@ package com.qianfeng.dao;
 
 import com.qianfeng.entity.grade;
 
+import java.util.List;
+
 public interface gradeMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface gradeMapper {
     int updateByPrimaryKeySelective(grade record);
 
     int updateByPrimaryKey(grade record);
+
+    public List<grade> findAllGrade();
 }
