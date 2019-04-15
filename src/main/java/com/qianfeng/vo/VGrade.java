@@ -1,4 +1,4 @@
-package com.qianfeng.Vo;
+package com.qianfeng.vo;
 
 import java.util.Date;
 

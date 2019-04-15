@@ -1,6 +1,5 @@
 package com.qianfeng.controller;
 
-import com.qianfeng.Vo.VGrade;
 import com.qianfeng.common.JsonBean;
 import com.qianfeng.entity.grade;
 import com.qianfeng.service.GradeService;
@@ -11,8 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller

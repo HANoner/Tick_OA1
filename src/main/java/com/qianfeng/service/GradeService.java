@@ -1,9 +1,7 @@
 package com.qianfeng.service;
 
-import com.qianfeng.Vo.VGrade;
 import com.qianfeng.entity.grade;
 
-import java.util.List;
 import java.util.Map;
 
 public interface GradeService {

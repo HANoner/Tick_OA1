@@ -2,7 +2,7 @@ package com.qianfeng.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.qianfeng.Vo.VGrade;
+import com.qianfeng.vo.VGrade;
 import com.qianfeng.dao.gradeMapper;
 import com.qianfeng.entity.grade;
 import com.qianfeng.service.GradeService;

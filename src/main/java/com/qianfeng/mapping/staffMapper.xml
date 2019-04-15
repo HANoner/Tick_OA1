@@ -149,4 +149,11 @@
       photo = #{photo,jdbcType=VARCHAR}
     where no = #{no,jdbcType=VARCHAR}
   </update>
+
+  <!--查询所有-->
+  <select id="findAllStaff" resultType="staff">
+   SELECT * FROM t_staff
+
+  </select>
+
 </mapper>

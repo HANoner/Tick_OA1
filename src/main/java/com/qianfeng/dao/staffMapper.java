@@ -2,6 +2,8 @@ package com.qianfeng.dao;
 
 import com.qianfeng.entity.staff;
 
+import java.util.List;
+
 public interface staffMapper {
     int deleteByPrimaryKey(String no);
 
@@ -14,4 +16,6 @@ public interface staffMapper {
     int updateByPrimaryKeySelective(staff record);
 
     int updateByPrimaryKey(staff record);
+
+    public List<staff> findAllStaff();
 }

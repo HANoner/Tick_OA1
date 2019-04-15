@@ -11,8 +11,8 @@
 	<!-- 设置类型的别名 -->
 	<typeAliases>
 		<!-- <typeAlias type="com.qianfeng.crud.Employee" alias="employee"/> -->
-		<typeAlias type="com.qianfeng.Vo.VGrade" alias="vGrade"/>
-
+		<typeAlias type="com.qianfeng.vo.VGrade" alias="vGrade"/>
+		<typeAlias type="com.qianfeng.entity.staff" alias="staff"/>
 	</typeAliases>
 
 	<plugins>

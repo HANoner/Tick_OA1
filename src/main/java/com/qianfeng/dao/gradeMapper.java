@@ -1,6 +1,6 @@
 package com.qianfeng.dao;
 
-import com.qianfeng.Vo.VGrade;
+import com.qianfeng.vo.VGrade;
 import com.qianfeng.entity.grade;
 
 import java.util.List;
