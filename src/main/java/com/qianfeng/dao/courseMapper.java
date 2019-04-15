@@ -1,8 +1,6 @@
 package com.qianfeng.dao;
 
 import com.qianfeng.entity.course;
-import com.qianfeng.vo.VCourse;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
