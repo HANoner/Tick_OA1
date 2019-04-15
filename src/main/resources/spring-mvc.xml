@@ -46,7 +46,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     
-    <!-- 将静态资源 交给tomcat默认的servlet进行处理 -->
+    <!-- 将静态资源 交给tomcat默认的servlet进行处理  /  -->
     <mvc:default-servlet-handler/>
     
     

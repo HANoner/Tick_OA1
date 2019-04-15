@@ -1,8 +1,10 @@
 package com.qianfeng.service.impl;
 
 import com.qianfeng.dao.roleMapper;
+import com.qianfeng.entity.user;
 import com.qianfeng.service.menuListService;
 import com.qianfeng.vo.VMenuList;
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

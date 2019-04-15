@@ -107,8 +107,8 @@
 
 
       <!--以下是添加的-->
-  <select id="findPwdByName" parameterType="string" resultType="string">
-    select password from t_user where no=#{uno}
+  <select id="findPwdByName" parameterType="string" resultMap="BaseResultMap">
+    select * from t_user where no=#{uno}
   </select>
 
   <select id="findRoleByName" parameterType="string" resultType="string">
@@ -125,6 +125,10 @@
     t_role tr ON tur.rid = tr.id INNER JOIN
     t_roleauthority tra ON tr.id = tra.rid INNER JOIN
     t_authority ta on tra.aid = ta.id where  1= 1 and tu.`no` = #{uno} and ta.parentId = 0
+  </select>
+
+  <select id="findUser"  parameterType="string" resultMap="BaseResultMap">
+    SELECT * from t_user tu where tu.no = #{uno}
   </select>
 
 

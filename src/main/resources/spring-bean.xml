@@ -157,11 +157,11 @@
 				<!--静态资源全部都放行-->
 				/media/** = anon
 			/list.do = anon
+				/user/** = authc
 
 
 
-
-				/logout.do = logout
+				/userloginout.do = logout
 				<!-- /** 是任意资源 身份认证之后可以访问-->
 				<!--/** = authc-->
 				<!--  如果涉及rememberMe功能，需要使用user  这个使用的时候不是直接跳转
@@ -174,7 +174,7 @@
 	<bean id="myPermFilter" class="com.qianfeng.realm.MyPermFilter"></bean>
 	<!-- 手动创建了一个logout过滤器的对象，id和 -->
 	<bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">
-		<property name="redirectUrl" value="/login.jsp" />
+		<property name="redirectUrl" value="/login.html" />
 	</bean>
 
 </beans>

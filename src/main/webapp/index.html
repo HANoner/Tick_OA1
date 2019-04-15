@@ -50,11 +50,12 @@
             <li class="layui-nav-item" style="margin-right: 20px">
                 <a href="javascript:showTab(1001,'processlist.html','待办事项');">待办事项<span class="layui-badge">99+</span></a>
             </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">
+            <li class="layui-nav-item" id = "user">
+
+              <!--  <a href="javascript:;">
                     <img src="media/images/qf_logo.png" class="layui-nav-img">
                     Feri
-                </a>
+                </a>-->
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:showTab(1001,'user.html','我的信息');">我的信息</a></dd>
                     <dd><a href="javascript:showTab(1001,'user.html','更改头像');">更改头像</a></dd>
@@ -140,7 +141,7 @@
 </script>
 </body>
 <script type="text/javascript">
-    var uno = window.location.search;
+   /* var uno = window.location.search;
     $(function(){
         $.ajax({
             url:"/tick/menu/list.do"+uno,
@@ -163,7 +164,7 @@
                 }
             }
         })
-    })
+    })*/
 
 </script>
 <script type="text/javascript">
@@ -202,5 +203,27 @@
     });
 
 </script>
+<script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url:"/tick/user/user.do",
+            dataType:"json",
+            type:"get",
+            success:function (data) {
+                if(data.code == 1){
+                    var infos = data.info
+                    $(infos).each(function () {
+                        html =  ' <a href="javascript:;">';
+                           html +='  <img src='+this.headphoto+' class="layui-nav-img">';
+                           html += this.name;
+                        html += '</a>';
+                           $("#user").append($(html));
+                    })
+                }
+            }
+        })
+    })
+</script>
+
 
 </html>
