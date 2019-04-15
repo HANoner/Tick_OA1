@@ -8,5 +8,5 @@ import com.qianfeng.entity.course;
  */
 public interface CourseService {
     public void  insertSelective(course record);
-
+    public void addCourse(course course);
 }

@@ -15,4 +15,6 @@ public interface courseMapper {
 
     int updateByPrimaryKey(course record);
 
+    public void addCourse(course course);
+
 }

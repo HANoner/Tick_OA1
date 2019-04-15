@@ -58,7 +58,7 @@ public class MyRealm extends AuthorizingRealm{
         SimpleAuthenticationInfo simpleAuthenticationInfo = null;
         if (user != null){
 
-            simpleAuthenticationInfo = new SimpleAuthenticationInfo(user.getName(), user.getPassword(), this.getName());
+            simpleAuthenticationInfo = new SimpleAuthenticationInfo(user.getNo(), user.getPassword(), this.getName());
         }
 
         return simpleAuthenticationInfo;

@@ -19,4 +19,9 @@ public class CourseServiceImpl implements CourseService {
     public void insertSelective(course record) {
         courseMapper.insertSelective(record);
     }
+
+    @Override
+    public void addCourse(course course) {
+        courseMapper.addCourse(course);
+    }
 }
