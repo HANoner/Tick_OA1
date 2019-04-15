@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form" action="gradeadd.do" method="post">
+		<form class="layui-form" action="#" method="post">
 			<div class="layui-form-item">
 				<label class="layui-form-label">班级名称</label>
 				<div class="layui-input-block">
@@ -31,7 +31,7 @@
 			<div class="layui-form-item">
 				<label class="layui-form-label">开班日期</label>
 				<div class="layui-input-block">
-				 <input type="text" name="createdate" id="date" autocomplete="off" class="layui-input">
+				 <input type="date" name="createdate" id="date" autocomplete="off" class="layui-input">
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -70,6 +70,26 @@
 								elem : '#date'
 							});
 							initData();
+
+                    form.on('submit', function(data){
+                        // 发送ajax请求
+                        $.ajax({
+                            type:"get",
+                            url:"/tick/grade/add.do",
+                            data:$("form").serialize(),
+                            dataType:"json",
+                            success:function(data){
+                                if(data.code == 1) {
+                                    var t = parent.layui.table;// 上面写法也可以用
+                                    /* t.reload('test');// 重新加载页面*/
+                                    window.location.href = "gradelist.html";
+                                }
+                            }
+
+                        })
+                        // 阻止默认的提交
+                        return false;
+                    });
 		});
 		
 		//初始化数据

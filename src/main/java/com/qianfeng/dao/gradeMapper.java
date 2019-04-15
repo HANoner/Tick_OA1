@@ -1,5 +1,6 @@
 package com.qianfeng.dao;
 
+import com.qianfeng.Vo.VGrade;
 import com.qianfeng.entity.grade;
 
 import java.util.List;
@@ -17,5 +18,7 @@ public interface gradeMapper {
 
     int updateByPrimaryKey(grade record);
 
-    public List<grade> findAllGrade();
+    public List<VGrade> findAllGrades();
+
+    public void deleteGrade(Integer id);
 }

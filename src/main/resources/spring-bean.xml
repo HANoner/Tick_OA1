@@ -143,6 +143,12 @@
 		<property name="loginUrl" value="/login.html"/>
 		<!-- 权限认证失败，则跳转到指定页面 -->
 		<property name="unauthorizedUrl" value="/error.jsp"/>
+		<property name="filters">
+			<map>
+				<!--  注意key的值 -->
+				<entry key="perms" value-ref="myPermFilter" />
+			</map>
+		</property>
 		<!-- Shiro连接约束配置,即过滤链的定义 -->
 		<property name="filterChainDefinitions">
 			<value>
@@ -164,7 +170,8 @@
 			</value>
 		</property>
 	</bean>
-
+	<!--  创建自定义的授权处理的对象 -->
+	<bean id="myPermFilter" class="com.qianfeng.realm.MyPermFilter"></bean>
 	<!-- 手动创建了一个logout过滤器的对象，id和 -->
 	<bean id="logout" class="org.apache.shiro.web.filter.authc.LogoutFilter">
 		<property name="redirectUrl" value="/login.jsp" />

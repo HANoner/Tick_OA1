@@ -27,7 +27,7 @@
 		  //第一个实例
 		  table.render({
 		    elem: '#tbdata'
-		    ,url: 'gradepage.do' //数据接口
+		    ,url: '/tick/grade/list.do' //数据接口
 		    ,page: true //开启分页
 		    ,cols: [[ //表头
 		      {field: 'id', title: '序号', sort: true, fixed: 'left'}
@@ -46,11 +46,11 @@
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除班级?', function(index){
 		                $.ajax({
-		                    url: "gradedelete.do",
+		                    url: "/tick/grade/delete.do",
 		                    type: "POST",
 		                    data:"id="+data.id,
 		                    success: function(data){
-		                        if(data.code==1000){
+		                        if(data.code==1){
 		                            obj.del();//删除表格中的对应行数据
 		                            layer.close(index);
 		                            layer.msg("删除成功", {icon: 6});
@@ -70,5 +70,23 @@
 	});
 
 </script>
+
+	<!--<script type="text/javascript">
+        $("form").submit(function(){
+            $.ajax({
+                type:"post",
+                url:"/tick/grade/list.do",
+                dataType:"json",
+                success:function (data) {
+                    if(data.code == 1){
+
+                        window.location.href = "index.html"
+                    }
+                }
+            })
+        })
+
+	</script>
+-->
 </body>
 </html>

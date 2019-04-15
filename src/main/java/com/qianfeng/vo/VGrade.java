@@ -1,22 +1,18 @@
-package com.qianfeng.entity;
-
-import org.springframework.format.annotation.DateTimeFormat;
+package com.qianfeng.Vo;
 
 import java.util.Date;
 
-public class grade {
+public class VGrade {
     private Integer id;
-
+    private String cname;
     private String name;
-
     private Integer flag;
-
     private Integer week;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+
     private Date createdate;
 
     private String location;
-
+    private Integer count;
     private Integer cid;
 
     public Integer getId() {
@@ -27,12 +23,20 @@ public class grade {
         this.id = id;
     }
 
+    public String getCname() {
+        return cname;
+    }
+
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Integer getFlag() {
@@ -64,7 +68,15 @@ public class grade {
     }
 
     public void setLocation(String location) {
-        this.location = location == null ? null : location.trim();
+        this.location = location;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public Integer getCid() {

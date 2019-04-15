@@ -114,4 +114,17 @@
       cid = #{cid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <!--查询所有年级信息-->
+  <select id="findAllGrades" resultType="vGrade">
+
+  SELECT tc.name cname, tg.*,IFNULL(ts.count,0) count  FROM t_grade tg
+  LEFT JOIN (SELECT gid, count(*) count FROM t_student GROUP BY gid) ts on tg.id= ts.gid
+  INNER JOIN t_course tc ON tg.cid=tc.id WHERE tg.flag=1
+
+  </select>
+
+  <update id="deleteGrade" parameterType="int">
+    UPDATE t_grade set flag =2 WHERE id=#{id}
+
+  </update>
 </mapper>
