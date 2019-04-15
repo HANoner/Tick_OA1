@@ -27,7 +27,7 @@
 		  //第一个实例
 		  table.render({
 		    elem: '#tbdata'
-		    ,url: 'coursepage.do' //数据接口
+		    ,url: 'course/list.do' //数据接口
 		    ,page: true //开启分页
 		    ,cols: [[ //表头
 		      {field: 'id', title: '序号', sort: true, fixed: 'left'}
@@ -67,5 +67,20 @@
 	});
 
 </script>
+<!--<script type="text/javascript">
+	$(function () {
+		$.ajax({
+			uri:"/tick/course/list.do",
+			type:"get",
+			dataType:"json",
+			success:function (data) {
+				if(data.code ==1){
+				    alert("11");
+				}
+            }
+		})
+    })
+
+</script>-->
 </body>
 </html>

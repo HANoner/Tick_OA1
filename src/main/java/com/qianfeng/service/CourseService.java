@@ -1,6 +1,10 @@
 package com.qianfeng.service;
 
 import com.qianfeng.entity.course;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author feng
@@ -9,4 +13,6 @@ import com.qianfeng.entity.course;
 public interface CourseService {
     public void  insertSelective(course record);
     public void addCourse(course course);
+
+    public Map<String,Object> findAll(int page, int limit);
 }

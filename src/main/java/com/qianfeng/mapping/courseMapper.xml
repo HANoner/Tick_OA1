@@ -147,4 +147,9 @@
       </if>
     </trim>
   </insert>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT * from t_course
+
+  </select>
 </mapper>

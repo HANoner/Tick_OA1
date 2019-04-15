@@ -1,6 +1,10 @@
 package com.qianfeng.dao;
 
 import com.qianfeng.entity.course;
+import com.qianfeng.vo.VCourse;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface courseMapper {
     int deleteByPrimaryKey(Integer id);
@@ -16,5 +20,7 @@ public interface courseMapper {
     int updateByPrimaryKey(course record);
 
     public void addCourse(course course);
+
+    public List<course> findAll();
 
 }
