@@ -1,6 +1,11 @@
 package com.qianfeng.dao;
 
+
+
+
+
 import com.qianfeng.entity.staff;
+import com.qianfeng.vo.VStaff;
 
 import java.util.List;
 
@@ -17,5 +22,5 @@ public interface staffMapper {
 
     int updateByPrimaryKey(staff record);
 
-    public List<staff> findAllStaff();
+    public List<VStaff> findAllStaff();
 }

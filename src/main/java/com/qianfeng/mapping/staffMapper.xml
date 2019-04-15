@@ -151,8 +151,8 @@
   </update>
 
   <!--查询所有-->
-  <select id="findAllStaff" resultType="staff">
-   SELECT * FROM t_staff
+  <select id="findAllStaff" resultType="vStaff">
+   SELECT s.*,d.`name` dname FROM t_staff s INNER JOIN t_depart d ON s.did=d.id
 
   </select>
 

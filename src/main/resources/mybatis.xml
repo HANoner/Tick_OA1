@@ -12,7 +12,7 @@
 	<typeAliases>
 		<!-- <typeAlias type="com.qianfeng.crud.Employee" alias="employee"/> -->
 		<typeAlias type="com.qianfeng.vo.VGrade" alias="vGrade"/>
-		<typeAlias type="com.qianfeng.entity.staff" alias="staff"/>
+		<typeAlias type="com.qianfeng.vo.VStaff" alias="vStaff"/>
 	</typeAliases>
 
 	<plugins>
