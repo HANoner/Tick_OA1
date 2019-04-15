@@ -44,7 +44,7 @@ function showData(obj) {
 <body>
 
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form" action="courseupdate.do" method="post">
+		<form class="layui-form" action="course/courseupdate.do" method="post" onsubmit="return false">
 		<div class="layui-form-item">
 				<label class="layui-form-label">学科序号</label>
 				<div class="layui-input-block">
@@ -63,7 +63,7 @@ function showData(obj) {
 			<div class="layui-form-item">
 				<label class="layui-form-label">成立日期</label>
 				<div class="layui-input-block">
-				 <input type="text" readonly="readonly" id="f3" autocomplete="off" class="layui-input">
+				 <input type="text" readonly="readonly" id="f3" autocomplete="off" class="layui-input" name = "createdate">
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -76,7 +76,7 @@ function showData(obj) {
 			<div class="layui-form-item">
 				<label class="layui-form-label">学科类型</label>
 				<div class="layui-input-block">
-					<input type="text" name="location" id="f5" lay-verify="name" autocomplete="off"
+					<input type="text" name="type" id="f5" lay-verify="name" autocomplete="off"
 						class="layui-input">
 				</div>
 			</div>
@@ -96,5 +96,21 @@ function showData(obj) {
 
 		});
 	</script>
+<script type="text/javascript">
+	$("form").submit(function () {
+		$.ajax({
+			url:"course/courseupdate.do",
+			data:$("form").serialize(),
+			dataType:"json",
+			type:"post",
+			success:function (data) {
+			    if (data.code == 1){
+				window.location.href = "courselist.html"
+                }
+            }
+		})
+    })
+
+</script>
 </body>
 </html>

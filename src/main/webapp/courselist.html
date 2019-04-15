@@ -44,7 +44,7 @@
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除学科?', function(index){
 		                $.ajax({
-		                    url: "coursedelete.do",
+		                    url: "course/coursedelete.do",
 		                    type: "POST",
 		                    data:"id="+data.id,
 		                    success: function(data){

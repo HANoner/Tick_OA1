@@ -21,4 +21,7 @@ public interface courseMapper {
 
     public List<course> findAll();
 
+    public  void deleteById(int id);
+
+
 }

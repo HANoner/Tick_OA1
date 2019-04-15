@@ -43,4 +43,15 @@ public class CourseServiceImpl implements CourseService {
         map.put("data",all);
         return map;
     }
+
+    @Override
+    public void deleteById(int id) {
+        courseMapper.deleteById(id);
+    }
+
+    @Override
+    public void updateByPrimaryKeySelective(course record) {
+        courseMapper.updateByPrimaryKey(record);
+    }
+
 }

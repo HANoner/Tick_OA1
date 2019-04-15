@@ -51,4 +51,30 @@ public class CourseServlet {
         return all;
 
     }
+
+    @RequestMapping("coursedelete.do")
+    public JsonBean deleteById(int id){
+        courseService.deleteById(id);
+        return  JsonUtils.createJsonBean(1000,null);
+    }
+    @RequestMapping("courseupdate.do")
+    public JsonBean updateCourse(int id, String name,String createdate,int week,int type){
+        course c = new course();
+        if (createdate != null && createdate != ""){
+            try {
+                c.setCreatedate(new SimpleDateFormat("yyyy-MM-dd").parse(createdate));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        c.setType(type);
+        c.setWeek(week);
+        c.setName(name);
+        c.setId(id);
+        c.setFlag(1);
+        courseService.updateByPrimaryKeySelective(c);
+
+        return  JsonUtils.createJsonBean(1 ,null);
+    }
+
 }

@@ -15,4 +15,8 @@ public interface CourseService {
     public void addCourse(course course);
 
     public Map<String,Object> findAll(int page, int limit);
+
+    public  void deleteById(int id);
+
+    public void  updateByPrimaryKeySelective(course record);
 }
