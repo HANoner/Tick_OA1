@@ -14,4 +14,5 @@ public interface courseMapper {
     int updateByPrimaryKeySelective(course record);
 
     int updateByPrimaryKey(course record);
+
 }

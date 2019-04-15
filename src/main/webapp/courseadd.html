@@ -12,7 +12,7 @@
 <body>
 
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form" action="courseadd.do" method="post">
+		<form class="layui-form" action="#" method="post" onsubmit="return false">
 			<div class="layui-form-item">
 				<label class="layui-form-label">学科名称</label>
 				<div class="layui-input-block">
@@ -82,6 +82,38 @@
 								}
 							});
 		});
+	</script>
+
+	<script type="text/javascript">
+        $("form").submit(function () {
+            $.ajax({
+                url:"/tick/course/add.do",
+                type:"post",
+                data:$("form").serialize(),
+                dataType:"json",
+                success:function (data) {
+                    if(data.code  == 1){
+                        alert("11")
+                    }
+                }
+            })
+        })
+
+        /*$(function () {
+            $.ajax({
+                type:"post",
+                url:"/tick/course/add.do",
+                dataType:"json",
+                data:$("form").serialize(),
+                success:function (data) {
+                    if(data.code == 1){
+                        alert("111")
+                    }
+                }
+
+            })
+        })*/
+
 	</script>
 </body>
 </html>

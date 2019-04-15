@@ -15,7 +15,7 @@ public class StaffServiceImpl implements StaffService {
     @Override
     public List<staff> findAllGrade() {
 
-        staffDao.findAllStaff()
+        staffDao.findAllStaff();
         return null;
     }
 }
