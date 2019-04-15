@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form" action="studentadd.do" method="post">
+		<form class="layui-form" action="student/studentadd.do" method="post">
 			<div class="layui-form-item">
 				<label class="layui-form-label">学员学号</label>
 				<div class="layui-input-block">
@@ -32,6 +32,7 @@
 				<div class="layui-input-block">
 					<select name="gid" id="cds">
 						<option value="-1">--请选择班级--</option>
+
 					</select>
 				</div>
 			</div>
@@ -113,9 +114,9 @@
 				</div>
 			</div>
 
-			<div class="layui-form-item">
-				<input class="layui-btn"  style="margin-left: 10%" id="btn1" type="submit"
-					value="确认新增">
+			<div class="layui-form-item"  >
+				<input href="studentlist.html" class="layui-btn"  style="margin-left: 10%" id="btn1" type="submit"
+					value="确认新增" >
 			</div>
 		</form>
 	</div>
@@ -124,15 +125,15 @@
 	<script src="media/layui/layui.js"></script>
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 	<script>
+
+
 	var form;
-		layui
-				.use(
-						[ 'form','upload', 'layedit', 'laydate' ],
+		layui.use([ 'form','upload', 'layedit', 'laydate' ],
 						function() {
 							form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
 							var upload = layui.upload;
-							   
-							 
+
+
 							//日期
 							laydate.render({
 								elem : '#date1'
@@ -140,7 +141,7 @@
 							laydate.render({
 								elem : '#date2'
 							});
-							
+
 
 							//自定义验证规则
 							form.verify({
@@ -156,17 +157,24 @@
 							});
 					initData();
 		});
+
+
+
 		//初始化数据
 		function initData() {
-			$.get("gradeall.do",null,function(arr){
-				for(i=0;i<arr.length;i++){
-					$("#cds").append("<option value='"+arr[i].id+"'>"+arr[i].name+"</option>");
+
+			$.get("grade/list.do?page=1&limit=10",null,function(arr){
+                var arr1 = arr.data
+
+				for(var i=0;i<arr1.length;i++){
+					$("#cds").append('<option value="'+arr1[i].id+'">'+arr1[i].cname+'</option>');
 				}
 				form.render("select");
 			});
-			$.get("staffall.do",null,function(arr){
-				for(i=0;i<arr.length;i++){
-					$("#inos").append("<option value='"+arr[i].no+"'>"+arr[i].name+"</option>");
+			$.get("/tick/staff/list.do?page=1&limit=10",null,function(arr){
+                var arr1 = arr.data
+				for(i=0;i<arr1.length;i++){
+					$("#inos").append("<option value='"+arr1[i].no+"'>"+arr1[i].name+"</option>");
 				}
 				form.render("select");
 			});
@@ -177,6 +185,7 @@
 					$("#no1").val(obj.msg);
 				}
 			}) */
+
 		}
 	</script>
 </body>

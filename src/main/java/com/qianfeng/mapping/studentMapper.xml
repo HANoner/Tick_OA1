@@ -207,4 +207,28 @@
       photo = #{photo,jdbcType=VARCHAR}
     where no = #{no,jdbcType=VARCHAR}
   </update>
+
+  <!-- insert into t() values(),(),() -->
+  <insert id="addBatch" parameterType="list">
+    insert into sys_user(<include refid="Base_Column_List" />)
+    values
+    <foreach collection="list" item="item" separator="," >
+      (#{item.usrId},#{item.usrName},#{item.usrPassword},#{item.usrRoleId},#{item.usrFlag})
+    </foreach>
+  </insert>
+
+  <!--查询所有年级信息-->
+  <select id="findAllStudent" resultType="VStudentList">
+
+    SELECT tg.name gname, ts.* FROM t_student ts
+LEFT JOIN t_grade tg on ts.gid=tg.id
+WHERE ts.flag=1
+
+
+  </select>
+
+  <update id="deleteStudent" parameterType="String">
+    UPDATE t_student set flag =2 WHERE no=#{no}
+
+  </update>
 </mapper>

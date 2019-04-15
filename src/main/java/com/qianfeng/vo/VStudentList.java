@@ -1,16 +1,22 @@
-package com.qianfeng.entity;
-
-import org.springframework.format.annotation.DateTimeFormat;
+package com.qianfeng.vo;
 
 import java.util.Date;
 
-public class student {
+/**
+ * 〈一句话功能简述〉<br>
+ * 〈和___相关的service〉
+ *
+ * @author 作者:oner
+ * @create 修改时间:2019/4/8
+ * @since 1.0.0
+ */
+public class VStudentList {
     private String no;
 
     private String name;
 
     private String sex;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+
     private Date birthday;
 
     private String cardno;
@@ -30,17 +36,19 @@ public class student {
     private String phone;
 
     private String introno;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+
     private Date createdate;
 
     private String photo;
+
+    private String gname;
 
     public String getNo() {
         return no;
     }
 
     public void setNo(String no) {
-        this.no = no == null ? null : no.trim();
+        this.no = no;
     }
 
     public String getName() {
@@ -48,7 +56,7 @@ public class student {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public String getSex() {
@@ -56,7 +64,7 @@ public class student {
     }
 
     public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
+        this.sex = sex;
     }
 
     public Date getBirthday() {
@@ -72,7 +80,7 @@ public class student {
     }
 
     public void setCardno(String cardno) {
-        this.cardno = cardno == null ? null : cardno.trim();
+        this.cardno = cardno;
     }
 
     public String getSchool() {
@@ -80,7 +88,7 @@ public class student {
     }
 
     public void setSchool(String school) {
-        this.school = school == null ? null : school.trim();
+        this.school = school;
     }
 
     public String getEducation() {
@@ -88,7 +96,7 @@ public class student {
     }
 
     public void setEducation(String education) {
-        this.education = education == null ? null : education.trim();
+        this.education = education;
     }
 
     public Integer getGid() {
@@ -112,7 +120,7 @@ public class student {
     }
 
     public void setEmail(String email) {
-        this.email = email == null ? null : email.trim();
+        this.email = email;
     }
 
     public String getQq() {
@@ -120,7 +128,7 @@ public class student {
     }
 
     public void setQq(String qq) {
-        this.qq = qq == null ? null : qq.trim();
+        this.qq = qq;
     }
 
     public String getPhone() {
@@ -128,7 +136,7 @@ public class student {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+        this.phone = phone;
     }
 
     public String getIntrono() {
@@ -136,7 +144,7 @@ public class student {
     }
 
     public void setIntrono(String introno) {
-        this.introno = introno == null ? null : introno.trim();
+        this.introno = introno;
     }
 
     public Date getCreatedate() {
@@ -152,6 +160,14 @@ public class student {
     }
 
     public void setPhoto(String photo) {
-        this.photo = photo == null ? null : photo.trim();
+        this.photo = photo;
+    }
+
+    public String getGname() {
+        return gname;
+    }
+
+    public void setGname(String gname) {
+        this.gname = gname;
     }
 }

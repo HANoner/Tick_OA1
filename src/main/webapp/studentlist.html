@@ -28,7 +28,7 @@
 		  //第一个实例
 		  table.render({
 		    elem: '#tbdata'
-		    ,url: 'studentpage.do' //数据接口
+		    ,url: 'student/list.do' //数据接口
 		    ,page: true //开启分页
 		    ,cols: [[ //表头
 		      {field: 'no', title: '学号', sort: true, fixed: 'left'}
@@ -50,7 +50,7 @@
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除学员?', function(index){
 		                $.ajax({
-		                    url: "studentdelete.do",
+		                    url: "student/delete.do",
 		                    type: "POST",
 		                    data:"no="+data.no,
 		                    success: function(data){
