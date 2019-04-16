@@ -1,17 +1,26 @@
-package com.qianfeng.entity;
-
-import org.springframework.format.annotation.DateTimeFormat;
+package com.qianfeng.vo;
 
 import java.util.Date;
 
-public class depart {
+/**
+ * 〈一句话功能简述〉<br>
+ * 〈和___相关的service〉
+ *
+ * @author 作者:oner
+ * @create 修改时间:2019/4/8
+ * @since 1.0.0
+ */
+public class VDepart {
+
     private Integer id;
 
     private String name;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+
     private Date createtime;
 
     private Integer flag;
+
+    private Integer count;
 
     public Integer getId() {
         return id;
@@ -26,7 +35,7 @@ public class depart {
     }
 
     public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+        this.name = name;
     }
 
     public Date getCreatetime() {
@@ -43,5 +52,13 @@ public class depart {
 
     public void setFlag(Integer flag) {
         this.flag = flag;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

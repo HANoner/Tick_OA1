@@ -79,4 +79,18 @@
       flag = #{flag,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--查询所有部门信息-->
+  <select id="findAllDepart" resultType="VDepart">
+
+SELECT td.*, tw.count  FROM t_depart td LEFT JOIN (SELECT ts.did,COUNT(*)
+count from t_staff ts GROUP BY ts.did) tw ON td.id= tw.did
+
+  </select>
+
+  <update id="deleteDepart" parameterType="int">
+    UPDATE t_depart set flag =2 WHERE id=#{id}
+
+  </update>
+
 </mapper>

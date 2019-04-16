@@ -34,7 +34,7 @@ public class GradeServlet {
 
         try {
             gradeService.deleteGradeById(id);
-            return JsonUtils.createJsonBean(1,null);
+            return JsonUtils.createJsonBean(1000,null);
         } catch (Exception e) {
             e.printStackTrace();
             return JsonUtils.createJsonBean(0,e.getMessage());

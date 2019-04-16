@@ -27,12 +27,12 @@
 		  //第一个实例
 		  table.render({
 		    elem: '#tbdata'
-		    ,url: 'departpage.do' //数据接口
+		    ,url: '/tick/depart/list.do' //数据接口
 		    ,page: true //开启分页
 		    ,cols: [[ //表头
 		      {field: 'id', title: '序号', sort: true, fixed: 'left'}
 		      ,{field: 'name', title: '部门名称'}
-		      ,{field: 'dcount', title: '部门人数', sort: true}
+		      ,{field: 'count', title: '部门人数', sort: true}
 		      ,{field: 'createtime', title: '成立日期'}
 		      ,{field:'right', title: '操作',toolbar:"#barop"}
 		    ]]
@@ -43,7 +43,7 @@
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除部门?', function(index){
 		                $.ajax({
-		                    url: "departdelete.do",
+		                    url: "/tick/grade/delete.do",
 		                    type: "POST",
 		                    data:"id="+data.id,
 		                    success: function(data){
