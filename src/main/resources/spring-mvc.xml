@@ -26,7 +26,12 @@
 		<!-- 扫描指定的注解 -->
 		<!-- <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
 	</context:component-scan>
-    
+    <!-- 文件上传的解析器  id的值不能改-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 上传文件的最大大小 ，单位字节 ，比如 1024 * 1024 = 1M-->
+        <property name="maxUploadSize" value="1048576"></property>
+
+    </bean>
     
     <!-- 引入验证器 -->
     <mvc:annotation-driven>

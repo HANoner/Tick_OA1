@@ -94,7 +94,8 @@
 		
 		//初始化数据
 		function initData() {
-			$.get("courseall.do",null,function(arr){
+			$.get("/tick/course/list.do?page=1&limit=10",null,function(arr1){
+			    var arr = arr1.data;
 				for(i=0;i<arr.length;i++){
 					$("#cds").append("<option value='"+arr[i].id+"'>"+arr[i].name+"</option>");
 				}

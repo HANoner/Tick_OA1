@@ -152,8 +152,27 @@
 
   <!--查询所有-->
   <select id="findAllStaff" resultType="vStaff">
-   SELECT s.*,d.`name` dname FROM t_staff s INNER JOIN t_depart d ON s.did=d.id
+   SELECT s.*,d.`name` dname FROM t_staff s INNER JOIN t_depart d ON s.did=d.id where s.flag=1
 
   </select>
+
+  <update id="deleteStaffById" parameterType="String">
+     update t_staff SET flag =2 WHERE `no`=#{no};
+
+  </update>
+
+  <select id="findLastNo" resultType="String">
+
+    select ts.`no` from t_staff ts order by ts.`no` DESC limit 1
+  </select>
+
+  <insert id="addBatch" parameterType="list">
+    insert into t_staff (<include refid="Base_Column_List" />)
+    values
+    <foreach collection="list" item="item" separator="," >
+      (#{item.no},#{item.name},#{item.did},#{item.flag},#{item.sex},#{item.email},#{item.qq},#{item.phone},#{item.createdate},#{item.photo})
+    </foreach>
+
+  </insert>
 
 </mapper>

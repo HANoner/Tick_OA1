@@ -9,10 +9,11 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="media/layui/css/layui.css" media="all">
 <script src="media/js/jquery.min.js"></script>
+<script type="text/javascript" src="media/js/jquery.form.min.js"> </script>
 </head>
 <body>
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form" action="staffbatch.do" method="post" enctype="multipart/form-data">
+		<form class="layui-form" action="#" method="#" enctype="multipart/form-data">
 		<div class="layui-form-item">
 				<label class="layui-form-label">下载模板</label>
 				<div class="layui-input-block">
@@ -35,9 +36,9 @@
 	<script src="media/layui/layui.js"></script>
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 	<script>
-	layui.use('table', function(){
+	layui.use(['form','table'], function(){
 		  var table = layui.table;
-		  
+        form = layui.form,
 		  //第一个实例
 		  table.render({
 		    elem: '#tbdata'
@@ -55,31 +56,27 @@
 		      ,{field:'right', title: '操作',toolbar:"#barop"}
 		    ]]
 		  });
-		  //监听工具条
-		  table.on('tool(tbop)', function(obj){
-		        var data = obj.data;
-		        if(obj.event === 'del'){
-		            layer.confirm('是否确认删除员工?', function(index){
-		                $.ajax({
-		                    url: "staffdelete.do",
-		                    type: "POST",
-		                    data:"no="+data.no,
-		                    success: function(data){
-		                        if(data.code==1000){
-		                            obj.del();//删除表格中的对应行数据
-		                            layer.close(index);
-		                            layer.msg("删除成功", {icon: 6});
-		                        }else{
-		                            layer.msg("删除失败", {icon: 5});
-		                        }
-		                    }
-		                });
-		            });
-		        } else if(obj.event === 'edit'){//编辑 修改
-		           location.href="staffupdate.html?d="+ encodeURI(JSON.stringify(data));
-		        }
+
+              form.on('submit', function(data){
+                  // 发送ajax请求
+                  $("form").ajaxSubmit({
+                      type:"post",
+                      url:"/tick/staff/import.do",
+                      data:$("form").serialize(),
+                      dataType:"json",
+                      success:function(data){
+                          if(data.code == 1) {
+                              alert(data.info);
+
+                              window.location.href = "stafflist.html"
+                          }
+                      }
+
+                  })
+                  // 阻止默认的提交
+                  return false;
+              });
 		});
-	});
 
 </script>
 </body>

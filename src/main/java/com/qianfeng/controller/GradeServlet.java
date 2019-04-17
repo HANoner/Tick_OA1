@@ -48,7 +48,7 @@ public class GradeServlet {
     }
     @RequestMapping("/grade/add.do")
     public JsonBean addGrade(grade grade){
-        grade.setCid(1);
+        /*grade.setCid(1);*/
         grade.setFlag(1);
         gradeService.addGrade(grade);
         return JsonUtils.createJsonBean(1,null);

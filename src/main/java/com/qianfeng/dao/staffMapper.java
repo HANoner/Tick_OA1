@@ -23,4 +23,11 @@ public interface staffMapper {
     int updateByPrimaryKey(staff record);
 
     public List<VStaff> findAllStaff();
+    /*根据员工号删除员工*/
+    public void  deleteStaffById(String no );
+    /*查找最后的员工No*/
+    public String findLastNo();
+
+    // 批量添加
+    public void addBatch(List<staff> list);
 }

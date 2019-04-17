@@ -9,15 +9,16 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="stylesheet" href="media/layui/css/layui.css" media="all">
 <script type="text/javascript" src="media/js/jquery.min.js"></script>
+	<script type="text/javascript" src="media/layui/layui.js"></script>
 </head>
 <body>
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form" action="staffadd.do" method="post" >
+		<form class="layui-form" action="#" method="post" >
 			<div class="layui-form-item">
 				<label class="layui-form-label">员工工号</label>
 				<div class="layui-input-block">
 					<input type="text" name="no" lay-verify="name" autocomplete="off"
-						placeholder="请输入工号" id="no1" class="layui-input">
+						placeholder="请输入工号" id="no1" class="layui-input" readonly="readonly">
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -30,7 +31,7 @@
 			<div class="layui-form-item">
             <label class="layui-form-label">所属部门</label>
 	            <div class="layui-input-block">
-	                <select name="did"  id="cds">
+	                <select name="did"  id="cds" lay-verify="required">
 	       				<option value="-1">--请选择部门--</option>
 	      			</select>
 	            </div>
@@ -45,13 +46,13 @@
 	  		<div class="layui-form-item">
 	            <label class="layui-form-label">邮箱</label>
 	            <div class="layui-input-inline">
-	                <input type="text" name="email" lay-verify="required" placeholder="请输入有效邮箱" autocomplete="off" class="layui-input">
+	                <input type="text"  name="email" lay-verify="email" placeholder="请输入有效邮箱" autocomplete="off" class="layui-input">
 	            </div>
 	        </div>
 	  		<div class="layui-form-item">
 	            <label class="layui-form-label">手机号</label>
 	            <div class="layui-input-inline">
-	                <input type="text" name="phone" lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+					<input type="text" name="phone" lay-verify="required | phone" placeholder="请输入手机号" autocomplete="off" class="layui-input" >
 	            </div>
 	        </div>
 	  		<div class="layui-form-item">
@@ -63,7 +64,7 @@
 	  		<div class="layui-form-item">
 	             <label class="layui-form-label">入职日期</label>
                 <div class="layui-input-inline">
-                    <input type="text" name="createdate" id="date" autocomplete="off" class="layui-input">
+                    <input type="text" name=" lay-verify="required" createdate" id="date" autocomplete="off" class="layui-input">
                 </div>
 	        </div>
  			<div class="layui-form-item">
@@ -77,19 +78,17 @@
  				 </div>
  			</div>
 			<div class="layui-form-item">
-				<input class="layui-btn"  style="margin-left: 10%"  id="btn1" disabled="disabled" type="submit" value="确认新增">
+				<input class="layui-btn"  style="margin-left: 10%"  id="btn1"  type="submit" value="确认新增">
 			</div>
 		</form>
 	</div>
 
 
-	<script src="media/layui/layui.js"></script>
+	<script src="media/layui/layui.js" charset="utf-8"></script>
+
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 	<script>
-	var form;
-		layui
-				.use(
-						[ 'form','upload', 'layedit', 'laydate' ],
+		layui.use([ 'form','upload', 'layedit', 'laydate'],
 						function() {
 							form = layui.form, layer = layui.layer, layedit = layui.layedit, laydate = layui.laydate;
 							var upload = layui.upload;
@@ -118,35 +117,57 @@
 							laydate.render({
 								elem : '#date'
 							});
-							
+                            form.verify({
+                                    phone:[/^1[35789]\d{9}$/, '手机号格式不正确']
+                                ,email:[/^[a-z0-9._%-]+@([a-z0-9-]+\.)+[a-z]{2,4}$|^1[3|4|5|7|8]\d{9}$/, '邮箱格式不对']
+                            });
 
-							//自定义验证规则
-							form.verify({
-								title : function(value) {
-									if (value.length < 5) {
-										return '标题至少得5个字符啊';
-									}
-								},
-								pass : [ /(.+){6,12}$/, '密码必须6到12位' ],
-								content : function(value) {
-									layedit.sync(editIndex);
-								}
-							});
 					initData();
+                            form.on('submit', function(data){
+                                // 发送ajax请求
+                                $.ajax({
+                                    type:"get",
+                                    url:"staff/add.do",
+                                    data:$("form").serialize(),
+                                    dataType:"json",
+                                    success:function(data){
+                                        if(data.code == 1) {
+                                            var t = parent.layui.table;// 上面写法也可以用
+                                            /* t.reload('test');// 重新加载页面*/
+											alert(data.info);
+                                            window.location.href = "stafflist.html";
+                                        }
+                                    }
+
+                                })
+                                // 阻止默认的提交
+                                return false;
+                            });
 		});
 		//初始化数据
 		function initData() {
-			$.get("departall.do",null,function(arr){
-				for(i=0;i<arr.length;i++){
-					$("#cds").append("<option value='"+arr[i].id+"'>"+arr[i].name+"</option>");
-				}
-				form.render("select");
-			});
-			$.get("staffno.do",null,function(obj){
-				if(obj.msg=='null'){
-					$("#no1").val("qf000001");
+                $.get("/tick/depart/list.do?page=1",null,function(arr1){
+                    var arr = arr1.data;
+                    for(i=0;i<arr.length;i++){
+                        $("#cds").append("<option value='"+arr[i].id+"'>"+arr[i].name+"</option>");
+
+                    }
+                    form.render("select");
+                });
+
+			$.get("/tick/staff/lastNo.do",null,function(obj){
+				if(obj.msg!='null'){
+				    /*将获取到的NO进行增加1的操作*/
+				    var b= (obj.msg).replace("qf","");
+				    var  a=parseInt(b)+1;
+					var c=a.toString();
+					var arr=c.split("");
+				    var format="000000"
+					var no="qf"+format.substring(arr.length-1,5)+c
+
+                    $("#no1").val(no);
 				}else{
-					$("#no1").val(obj.msg+1);
+					alert("获取工号失败");
 				}
 				
 			})

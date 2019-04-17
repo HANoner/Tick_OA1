@@ -1,6 +1,9 @@
 package com.qianfeng.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
+import java.util.zip.DataFormatException;
 
 public class staff {
     private String no;
@@ -18,7 +21,7 @@ public class staff {
     private String qq;
 
     private String phone;
-
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdate;
 
     private String photo;

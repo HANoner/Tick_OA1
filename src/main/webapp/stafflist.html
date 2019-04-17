@@ -47,11 +47,11 @@
 		        if(obj.event === 'del'){
 		            layer.confirm('是否确认删除员工?', function(index){
 		                $.ajax({
-		                    url: "staffdelete.do",
+		                    url: "/tick/staff/delete.do",
 		                    type: "POST",
 		                    data:"no="+data.no,
 		                    success: function(data){
-		                        if(data.code==1000){
+		                        if(data.code==1){
 		                            obj.del();//删除表格中的对应行数据
 		                            layer.close(index);
 		                            layer.msg("删除成功", {icon: 6});
@@ -62,6 +62,7 @@
 		                });
 		            });
 		        } else if(obj.event === 'edit'){//编辑 修改
+                    console.log(JSON.stringify(data));
 		           location.href="staffupdate.html?d="+ encodeURI(JSON.stringify(data));
 		        }
 		});
