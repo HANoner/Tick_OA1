@@ -15,6 +15,7 @@ public class SessionUtil {
         return  session;
     }
     public static void  setSession(Session session){
-         SessionUtil.session = session;
+
+        SessionUtil.session = session;
     }
 }

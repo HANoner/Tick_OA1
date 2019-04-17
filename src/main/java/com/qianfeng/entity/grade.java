@@ -12,6 +12,7 @@ public class grade {
     private Integer flag;
 
     private Integer week;
+
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdate;
 

@@ -2,6 +2,8 @@ package com.qianfeng.dao;
 
 import com.qianfeng.entity.check;
 
+import java.util.List;
+
 public interface checkMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface checkMapper {
     int updateByPrimaryKeySelective(check record);
 
     int updateByPrimaryKey(check record);
+
+    public List<check> findAll();
 }

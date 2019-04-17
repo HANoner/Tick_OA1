@@ -122,5 +122,19 @@
   where u.no= #{uno}
   </select>
 
+  <select id="roleAll" parameterType="string" resultMap="BaseResultMap">
+    SELECT id ,info ,`name` FROM t_role
+    <where>
+      <if test='no != null and no != "" '>
+        and name like '%${no}%'
+      </if>
+    </where>
 
+  </select>
+
+
+  <delete id="roleDeleteById" parameterType="int" >
+    DELETE  from t_role WHERE  id = #{id}
+
+  </delete>
 </mapper>

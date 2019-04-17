@@ -132,4 +132,20 @@
   </select>
 
 
+  <select id="findSearch" parameterType="map" resultType="com.qianfeng.vo.VUserLimit">
+     SELECT tu.id id,tu.`name` name,tu.`no` no ,tu.flag flag,tr.info role from t_user tu
+INNER JOIN t_userrole tur ON tu.id = tur.uid INNER JOIN t_role tr ON tur.rid = tr.id
+    <where>
+      <if test='no != null and no != ""'>
+        and tu.`no` LIKE '%${no}%'
+      </if>
+      <if test='flag != null and flag != ""'>
+        and tu.flag = ${flag}
+      </if>
+    </where>
+  </select>
+<delete id="userDelById" parameterType="int">
+  DELETE from t_user where id = #{id}
+</delete>
+
 </mapper>

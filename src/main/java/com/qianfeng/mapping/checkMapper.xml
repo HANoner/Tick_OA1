@@ -149,4 +149,8 @@
       flag = #{flag,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT  * from t_check
+  </select>
 </mapper>

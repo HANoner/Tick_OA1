@@ -20,5 +20,7 @@ public interface UserService {
 
     public user findUser();
 
+    public  void userDelById(int id);
+
 
 }

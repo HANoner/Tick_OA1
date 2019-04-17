@@ -1,6 +1,8 @@
 package com.qianfeng.dao;
 
 import com.qianfeng.entity.user;
+import com.qianfeng.vo.VUserLimit;
+import org.apache.ibatis.annotations.Param;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -29,4 +31,9 @@ public interface userMapper {
     /*个人信息的展示*/
 
     public user findUser(String no);
+
+
+    public List<VUserLimit> findSearch(@Param("no") String no, @Param("flag") Integer flag);
+
+    public  void userDelById(int id);
 }

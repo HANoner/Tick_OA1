@@ -19,4 +19,9 @@ public interface roleMapper {
     int updateByPrimaryKey(role record);
     // menu
     public List<VMenuList> findAll(String uno);
+
+    //展示所有的权限
+    public List<role> roleAll(String no);
+
+    public void roleDeleteById(int id);
 }
