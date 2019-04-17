@@ -4,6 +4,7 @@ import com.qianfeng.common.JsonBean;
 import com.qianfeng.dao.userMapper;
 import com.qianfeng.entity.role;
 import com.qianfeng.entity.user;
+import com.qianfeng.service.AuthorityService;
 import com.qianfeng.service.RoleService;
 import com.qianfeng.service.UserLimitService;
 import com.qianfeng.utils.JsonUtils;
@@ -32,6 +33,9 @@ public class AuthorityController {
     @Autowired
     private RoleService roleService;
 
+    @Autowired
+    private AuthorityService authorityService;
+
     @RequestMapping("/search.do")
     public Map findSearch(String no,Integer flag,int page,int limit){
         Map search = userLimitService.findSearch(no, flag, page, limit);
@@ -55,5 +59,10 @@ public class AuthorityController {
         return  map;
     }
 
+    @RequestMapping("authoritylist.do")
+    public  Map findAuthoritylist(int limit,int page){
+        Map authorityList = authorityService.findAuthorityList(page, limit);
+        return authorityList;
+    }
 
 }

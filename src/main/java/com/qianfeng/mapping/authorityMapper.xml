@@ -103,4 +103,9 @@
       type = #{type,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="findAuthoritylist" resultMap="BaseResultMap">
+    
+    SELECT * from t_authority
+  </select>
 </mapper>

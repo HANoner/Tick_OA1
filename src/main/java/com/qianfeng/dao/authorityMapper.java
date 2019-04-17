@@ -2,6 +2,8 @@ package com.qianfeng.dao;
 
 import com.qianfeng.entity.authority;
 
+import java.util.List;
+
 public interface authorityMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface authorityMapper {
     int updateByPrimaryKeySelective(authority record);
 
     int updateByPrimaryKey(authority record);
+
+    public List<authority> findAuthoritylist();
 }
