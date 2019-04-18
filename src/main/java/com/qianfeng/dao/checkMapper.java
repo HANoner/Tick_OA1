@@ -1,7 +1,6 @@
 package com.qianfeng.dao;
 
 import com.qianfeng.entity.check;
-import com.qianfeng.entity.processtodo;
 
 import java.util.List;
 
@@ -21,6 +20,8 @@ public interface checkMapper {
     public List<check> findAll();
 
     public void processAdd(check check);
+
+    public void processDelById(Integer id);
 
 
 }

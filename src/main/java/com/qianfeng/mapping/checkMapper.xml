@@ -154,6 +154,10 @@
     SELECT  * from t_check
   </select>
 
+    <insert id="processDelById" parameterType="int">
+       UPDATE t_check set flag =4 WHERE id=#{id}
+
+    </insert>
 
   <insert id="processAdd" parameterType="com.qianfeng.entity.check">
     insert into t_check
@@ -222,6 +226,7 @@
       </if>
     </trim>
   </insert>
+
 
 
 </mapper>

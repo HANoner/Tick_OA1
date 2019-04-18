@@ -34,9 +34,14 @@ public class checkServiceImpl implements checkService {
     }
 
     @Override
+    public void processDelById(int id) {
+        checkmapper.processDelById(id);
+    }
+    @Override
     public void processAdd(check check) {
         checkmapper.processAdd(check);
     }
+
 
 
 }
