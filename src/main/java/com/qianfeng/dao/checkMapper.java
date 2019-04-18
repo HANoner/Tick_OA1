@@ -18,4 +18,6 @@ public interface checkMapper {
     int updateByPrimaryKey(check record);
 
     public List<check> findAll();
+
+
 }

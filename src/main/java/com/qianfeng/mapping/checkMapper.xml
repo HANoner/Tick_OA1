@@ -153,4 +153,8 @@
   <select id="findAll" resultMap="BaseResultMap">
     SELECT  * from t_check
   </select>
+
+
+
+
 </mapper>

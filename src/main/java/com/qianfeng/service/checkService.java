@@ -11,4 +11,7 @@ import java.util.Map;
  */
 public interface checkService {
     public Map findAll(int page, int limit);
+
+
+
 }

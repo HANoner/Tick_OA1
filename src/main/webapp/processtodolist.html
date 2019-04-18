@@ -27,7 +27,7 @@
 		  //第一个实例
 		  table.render({
 		    elem: '#tbdata'
-		    ,url: 'processnolist.do' //数据接口
+		    ,url: '/tick/Processtodo/list.do' //数据接口
 		    ,page: true //开启分页
 		    ,cols: [[ //表头
 		      {field: 'id', title: '序号', sort: true, fixed: 'left'}
@@ -49,7 +49,7 @@
 		        if(obj.event === 'n'){
 		            layer.confirm('是否拒绝?', function(index){
 		                $.ajax({
-		                    url: "processupdate.do",
+		                    url: "Processtodo/processupdate.do",
 		                    type: "POST",
 		                    data:"id="+data.id+"&flag=3&tid="+data.tid,
 		                    success: function(data){
@@ -65,7 +65,7 @@
 		            });
 		        } else if(obj.event === 'y'){//编辑 修改
                     $.ajax({
-                        url: "processupdate.do",
+                        url: "Processtodo/processupdateY.do",
                         type: "POST",
                         data:"id="+data.id+"&flag=2&tid="+data.tid,
                         success: function(data){

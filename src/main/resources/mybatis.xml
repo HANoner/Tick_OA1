@@ -16,6 +16,7 @@
 		<typeAlias type="com.qianfeng.vo.VStudentList" alias="VStudentList"/>
 		<typeAlias type="com.qianfeng.entity.staff" alias="staff"/>
 		<typeAlias type="com.qianfeng.vo.VDepart" alias="VDepart"/>
+		<typeAlias type="com.qianfeng.entity.check" alias="check"/>
 	</typeAliases>
 
 	<plugins>
