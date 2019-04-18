@@ -45,14 +45,14 @@
 		      {field: 'id', title: '序号', sort: true, fixed: 'left'}
 		      ,{field: 'title', title: '名称'}
 		      ,{field: 'aurl', title: '页面路径',templet: function (obj) {
-                          return obj.parentId==0?"":obj.aurl}
+                          return obj.parentid==0?"":obj.aurl}
 				  }
 		      ,{field: 'aicon', title: '图标', templet: function (obj) {
                           return "<span><i class=\"fa "+obj.aicon+"\"></i></span>";
                       }
 				  }
 		      ,{field: 'parentId', title: '级别', templet: function (obj) {
-					  return obj.parentId==0?"一级页面":"二级页面"}}
+					  return obj.parentid==0?"一级页面":"二级页面"}}
 		      ,{field:'right', title: '操作',toolbar:"#barop"}
 		    ]]
 		  });
