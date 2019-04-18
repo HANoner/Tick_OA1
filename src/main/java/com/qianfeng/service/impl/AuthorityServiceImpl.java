@@ -22,8 +22,8 @@ public class AuthorityServiceImpl implements AuthorityService {
     private authorityMapper authoritymapper;
     @Override
     public Map findAuthorityList(int page,int limit) {
-        List<authority> authoritylist = authoritymapper.findAuthoritylist();
         PageHelper.startPage(page,limit);
+        List<authority> authoritylist = authoritymapper.findAuthoritylist();
         long count = ((Page)authoritylist).getTotal();
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);

@@ -12,7 +12,6 @@ import java.util.Map;
 public interface checkService {
     public Map findAll(int page, int limit);
 
-    public void processDelById(int id);
-
+    public void processAdd(check check);
 
 }

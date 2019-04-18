@@ -1,5 +1,7 @@
 package com.qianfeng.service;
 
+import com.qianfeng.entity.processtodo;
+
 import java.util.Map;
 
 public interface ProcesstodoService {
@@ -8,5 +10,6 @@ public interface ProcesstodoService {
 
     public void processUpdateById(Integer id);
     public void processUpdateYById(Integer id);
+
 
 }

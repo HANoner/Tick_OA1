@@ -12,19 +12,19 @@
 </head>
 <body>
 	<div class="layui-container" style="margin-top: 5px">
-		<form class="layui-form layui-form-pane" action="processadd.do" method="post" >
+		<form class="layui-form layui-form-pane" action="processadd.do" method="post" onsubmit="return false">
 			<div class="layui-form-item">
 
 					<label class="layui-form-label">起始日期</label>
 					<div class="layui-input-block">
-						<input type="text" name="startDate" class="layui-input mydate">
+						<input type="text" name="startdate" class="layui-input mydate">
 					</div>
 
 			</div>
 			<div class="layui-form-item">
 				<label class="layui-form-label">结束日期</label>
 				<div class="layui-input-block">
-					<input type="text" name="endDate" class="layui-input mydate">
+					<input type="text" name="enddate" class="layui-input mydate">
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -52,7 +52,7 @@
 				<div class="layui-input-block">
 					<select name="rname"  id="cds">
 						<option value="-1">--请选择领导--</option>
-						<option value="张三">张三</option>
+						<!--<option value="张三">张三</option>-->
 					</select>
 				</div>
 			</div>
@@ -97,14 +97,30 @@
 					initData();
 		});
 		//初始化数据
-		function initData() {
+	/*	function initData() {
 			$.get("departall.do",null,function(arr){
 				for(i=0;i<arr.length;i++){
 					$("#cds").append("<option value='"+arr[i].id+"'>"+arr[i].name+"</option>");
 				}
 				form.render("select");
 			});
-		}
+		}*/
+	</script>
+	<script type="text/javascript">
+		$("form").submit(function () {
+			$.ajax({
+				type:"post",
+				url:"Processtodo/processadd.do",
+				data:$("form").serialize(),
+				dataType:"json",
+				success:function (data) {
+					if(data.code  == 1){
+					    window.location.href= "processlist.html"
+					}
+                }
+			})
+        })
+
 	</script>
 </body>
 </html>

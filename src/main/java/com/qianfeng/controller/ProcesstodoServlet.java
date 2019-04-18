@@ -1,10 +1,15 @@
 package com.qianfeng.controller;
 
 import com.qianfeng.common.JsonBean;
+import com.qianfeng.entity.check;
+import com.qianfeng.entity.processtodo;
+import com.qianfeng.entity.user;
 import com.qianfeng.service.DepartService;
 import com.qianfeng.service.ProcesstodoService;
 import com.qianfeng.service.checkService;
 import com.qianfeng.utils.JsonUtils;
+import com.qianfeng.utils.SessionUtil;
+import com.qianfeng.vo.constant;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,6 +59,16 @@ public class ProcesstodoServlet {
 
         processtodoService.processUpdateYById(id);
         return JsonUtils.createJsonBean(1000,null);
+    }
+    @RequestMapping("/Processtodo/processadd.do")
+    public JsonBean processAdd(check check){
+        user user =   (user)SessionUtil.getSession().getAttribute(constant.LONG_USER);
+        check.setFlag(1);
+        check.setStartname(user.getName());
+        check.setStartno(user.getNo());
+
+        checkService.processAdd(check);
+        return  JsonUtils.createJsonBean(1 ,null);
     }
 
 

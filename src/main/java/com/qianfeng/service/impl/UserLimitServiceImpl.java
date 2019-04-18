@@ -23,9 +23,9 @@ public class UserLimitServiceImpl implements UserLimitService {
 
     @Override
     public Map findSearch(String no, Integer flag, int page, int limit) {
-        List<VUserLimit> search = userMapper.findSearch(no, flag);
-        System.out.println(flag+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
         PageHelper.startPage(page,limit);
+        List<VUserLimit> search = userMapper.findSearch(no, flag);
         long count  =  ((Page)search).getTotal();
         Map<String,Object> map = new HashMap<>();
         map.put("code",0);
