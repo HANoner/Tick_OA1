@@ -23,6 +23,7 @@
 	<script>
 	layui.use('table', function(){
 		  var table = layui.table;
+
 		  
 		  //第一个实例
 		  table.render({
@@ -58,7 +59,15 @@
 		                });
 		            });
 		        } else if(obj.event === 'edit'){//编辑 修改
-		           location.href="departupdate.html?d="+ encodeURI(JSON.stringify(data));
+
+		         location.href="departupdate.html?d="+ encodeURI(JSON.stringify(data));
+                    // 弹窗
+                /*    layer.open({
+                        type: 2,
+                        area: ['400px', '500px'],
+                        content: "departupdate.html?d="+ encodeURI(JSON.stringify(data))//这里content是一个普通的String
+                    });*/
+
 		        }
 		});
 	});

@@ -65,4 +65,9 @@ public class AuthorityController {
         return authorityList;
     }
 
+    @RequestMapping("role.do")
+    public List findRole(){
+
+        return  null;
+    }
 }

@@ -131,19 +131,33 @@
     SELECT * from t_user tu where tu.no = #{uno}
   </select>
 
+  <resultMap type="com.qianfeng.vo.VUserLimit" id="menuMap">
+    <id property="id" column="id"/>
+    <result property="no" column="no"/>
+    <result property="name" column="name"/>
+    <result property="flag" column="flag"/>
+    <result property="parentid" column="parentid"/>
+    <collection property="rid" javaType="java.util.ArrayList" ofType="com.qianfeng.vo.VUserLimit">
+      <result property="id" column="rid"/>
+    </collection>
+  </resultMap>
 
-  <select id="findSearch" parameterType="map" resultType="com.qianfeng.vo.VUserLimit">
-     SELECT tu.id id,tu.`name` name,tu.`no` no ,tu.flag flag,tr.info role from t_user tu
-INNER JOIN t_userrole tur ON tu.id = tur.uid INNER JOIN t_role tr ON tur.rid = tr.id
+  <select id="findSearch" parameterType="map" resultMap="menuMap">
+    select u.id, u.no, u.name, u.flag ,r.info, r.id rid from t_user u
+    inner join t_userrole ur
+    on u.id = ur.uid
+    inner join t_role r
+    on ur.rid = r.id
     <where>
       <if test='no != null and no != ""'>
-        and tu.`no` LIKE '%${no}%'
+        and u.`no` LIKE '%${no}%'
       </if>
       <if test='flag != null and flag != ""'>
-        and tu.flag = ${flag}
+        and u.flag = ${flag}
       </if>
     </where>
   </select>
+
 <delete id="userDelById" parameterType="int">
   DELETE from t_user where id = #{id}
 </delete>

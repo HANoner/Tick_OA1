@@ -61,7 +61,7 @@ function showData(obj) {
 			</div>
 			
 			<div class="layui-form-item">
-				<input class="layui-btn"  style="margin-left: 10%"  type="submit" value="确认修改">
+				<input class="layui-btn"  style="margin-left: 10%"  type="submit" lay-filter="demo1" value="确认修改">
 			</div>
 		</form>
 	</div>
@@ -76,6 +76,9 @@ function showData(obj) {
 
 
 	</script>
+
+
+
 	<script type="text/javascript">
 		$("form").submit(function () {
 			$.ajax({
