@@ -19,5 +19,6 @@ public interface checkMapper {
 
     public List<check> findAll();
 
+    public void processDelById(Integer id);
 
 }

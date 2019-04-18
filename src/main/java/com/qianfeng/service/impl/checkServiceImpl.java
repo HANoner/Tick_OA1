@@ -33,7 +33,10 @@ public class checkServiceImpl implements checkService {
          return map;
     }
 
-
+    @Override
+    public void processDelById(int id) {
+        checkmapper.processDelById(id);
+    }
 
 
 }

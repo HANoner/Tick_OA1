@@ -56,7 +56,7 @@
 		        if(obj.event === 'n'){
 		            layer.confirm('是否取消?', function(index){
 		                $.ajax({
-		                    url: "processdel.do",
+		                    url: "check/processdel.do",
 		                    type: "POST",
 		                    data:"id="+data.id+"&pid="+data.pid,
 		                    success: function(data){

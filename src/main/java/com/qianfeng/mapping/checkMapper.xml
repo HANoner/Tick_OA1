@@ -154,7 +154,11 @@
     SELECT  * from t_check
   </select>
 
-
+  <update id="processDelById" parameterType="int">
+    update t_check
+    SET flag = 4
+    where id = #{id}
+  </update>
 
 
 </mapper>
